@@ -1,2 +1,3 @@
-# claims test
-test laravel 1
+# claims app
+get all claims - api/claims
+
