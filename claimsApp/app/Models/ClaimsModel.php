@@ -10,7 +10,12 @@ class ClaimsModel extends Model
     use HasFactory;
     public $table = "claims";
 
-    public function user() {
+    protected $fillable = [
+        'user_id',
+        'claim_text',
+    ];
+
+    public function users() {
         return $this->belongsTo(User::class);
     }
 

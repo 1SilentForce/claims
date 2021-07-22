@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use API\Claims as Claims;
+use API\Users as Users;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,3 +21,4 @@ use API\Claims as Claims;
 
 //    Route::apiResource('claims', Claims::getAll());
     Route::apiResource("claims", Claims::class);
+    Route::apiResource("users", Users::class);

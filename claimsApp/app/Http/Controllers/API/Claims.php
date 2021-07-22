@@ -4,7 +4,8 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Repositories\ClaimsRepository;
-//use App\Models\ClaimsModel;
+use App\Models\ClaimsModel;
+use App\Http\Requests\CreateClaimApiRequest;
 
 class Claims extends BaseController
 {
@@ -24,58 +25,22 @@ class Claims extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateClaimApiRequest $request)
     {
-        //
-    }
+        $data = $request->input();
+        $item = new ClaimsModel($data);
+        $item->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        if($item){
+            return response(["data" => "Done"]);
+        } else {
+            return response(["data" => "Error"]);
+        }
     }
 
     /**
@@ -86,6 +51,12 @@ class Claims extends BaseController
      */
     public function destroy($id)
     {
-        //
+        $result = ClaimsModel::destroy($id);
+
+        if($result) {
+            return response(["data" => "Done"]);
+        } else {
+            return response(["data" => "Error"]);
+        }
     }
 }

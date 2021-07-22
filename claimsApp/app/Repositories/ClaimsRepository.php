@@ -19,7 +19,7 @@ class ClaimsRepository extends CoreRepository
      *  Return the model
      */
     public function getAll() {
-        $fields = array("user_id", "claim_text");
+        $fields = array("id", "user_id", "claim_text");
         return $this->startConditions()->select($fields)->get();   // maybe add ->paginate($perPage);
     }
 }
